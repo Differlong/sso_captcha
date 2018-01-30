@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://139.217.18.189:8083/yhtj/ -->
+<html class="panel-fit">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Unipus用户统计平台</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/fltrp_style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/icon.css">
+
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../static/js/base.js"></script>
+    <script type="text/javascript">
+        function quit() {
+            var userId = "57d76d001acca8d965d7528e";
+            $.messager.confirm('确认', '确认退出吗？', function (r) {
+                if (r) {
+                    $.ajax({
+                        type: "POST",
+                        url: "http://139.217.18.189:8083/yhtj/1.0/loginCtrl/logout",
+                        data: {
+                            id: userId
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.code == 0) {
+                                window.top.location = "http://139.217.18.189:8083/yhtj";
+                            } else {
+                                alert(data.msg);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        $(function () {
+            $(".jxgl").click(function () {
+                $(".jxgl").removeClass("left_nav_s").addClass("left_nav_z");
+                $(this).addClass("left_nav_s");
+            });
+        })
+    </script>
+</head>
+<body class="easyui-layout ui_new layout panel-noscroll easyui-fluid" style="">
+<!--top-->
+<div class="panel layout-panel layout-panel-north" style="width: 1397px; left: 0px; top: 0px;">
+    <div data-options="region:&#39;north&#39;,border:false"
+         class="sys_top sys_top_ panel-body panel-body-noheader panel-body-noborder layout-body" title=""
+         style="width: 1397px; height: 42px;">
+        <div class="sys_top_1">
+            <div class="logo fleft"></div>
+            <!--top_right-->
+            <div class="fright">
+                <a href="javascript:void(0)" class="top_user" title="用户资料">phonecode&nbsp;</a>
+                <a onclick="quit();" class="top_quit" title="退出">&nbsp;</a>
+            </div>
+            <!--top_right-->
+        </div>
+    </div>
+</div>
+<!--top end-->
+<!--content-->
+<div class="panel layout-panel layout-panel-south" style="width: 1397px; left: 0px; top: 721px;">
+    <div data-options="region:&#39;south&#39;,border:false"
+         style="background: rgb(0, 91, 159); padding: 8px; border-top: 1px solid rgb(0, 165, 237); color: rgb(255, 255, 255); width: 1381px; height: 21px;"
+         class="region_bottom panel-body panel-body-noheader panel-body-noborder layout-body" title="">外研在线教育科技有限公司 版权所有
+    </div>
+</div>
+<!--left-->
+<div class="panel layout-panel layout-panel-west" style="width: 180px; left: 0px; top: 42px;">
+    <div data-options="region:&#39;west&#39;,split:false, " style="width: 180px; height: 679px;" id="left"
+         class="layout_left panel-body panel-body-noheader layout-body" title="">
+        <div class="logo2"></div>
+        <div class="tit2">统一用户管理平台</div>
+        <a target="myFrameName" href="../static/phone_code_query.html" class="jxgl left_nav_z left_nav_s">手机/邮箱验证码查询</a>
+        <a target="myFrameName" href="../static/user_manage.html"
+           class="jxgl left_nav_z ">用户管理</a>
+
+    </div>
+</div>
+<!--/二级导航-->
+<!--left end-->
+<!--标题-->
+<div class="panel layout-panel layout-panel-center" style="width: 1218px; left: 179px; top: 42px;">
+    <div data-options="region:&#39;center&#39;" style="background: rgb(233, 240, 248); width: 1218px; height: 679px;"
+         title="" class="panel-body panel-body-noheader layout-body">
+        <iframe src="../static/phone_code_query.html" id="myFrameId" name="myFrameName" width="100%"
+                height="98%"></iframe>
+    </div>
+</div>
+<!--标题end-->
+
+
+<div class="layout-split-proxy-h"></div>
+<div class="layout-split-proxy-v"></div>
+</body>
+</html>

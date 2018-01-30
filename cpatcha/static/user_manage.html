@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://139.217.18.189:8083/yhtj/1.0/user/phone_code_query -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>第三方登录用户查询</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/fltrp_style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/icon.css">
+
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../static/js/WdatePicker.js"></script>
+    <link href="../static/css/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../static/js/base.js"></script>
+    <script type="text/javascript" src="../static/js/yhtj.js"></script>
+    <script type="text/javascript" src="../static/js/userManage.js"></script>
+
+</head>
+<body style="padding: 0px">
+<!--操作区-->
+<div class="con_box1">
+    <div id="book_index_form">
+        <div class="fleft add_class1 tit1_w table_op_box">
+            <span>用户名：<input type="text" id="username" name="username" value=""></span>
+            <!--<span>类型：<input type="text" id="type" name="type" value=""></span>-->
+            <!--<input type="hidden" id="U3Url" value="/api/user/">-->
+        </div>
+        <div class="fleft add_class1 tit1_w table_op_box">
+	            <span>
+	            <a class="btn_t1"
+                   style="display:inline-block;">查询</a>
+                    <!--<a href="javascript:UserLogin.submitLoginForm();" class="login_btn">登 录</a>-->
+	            </span>
+        </div>
+    </div>
+</div>
+<!--表格-->
+<div class="con_box1">
+    <span class="con_box1_span">请输入查询信息!</span>
+    <table class="table1">
+        <tbody>
+        <tr>
+            <th>用户名</th>
+            <th>手机号</th>
+            <th>类型</th>
+            <th>用户操作</th>
+        </tr>
+        <tr>
+            <th class="username"></th>
+            <th class="phone"></th>
+            <th class="type"></th>
+            <th class="deleted">
+                <button>停用</button>
+                <button>重置密码</button>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="con_box1">
+
+</div>
+
+
+</body>
+</html>

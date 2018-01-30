@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0032)http://139.217.18.189:8083/yhtj/ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Unipus用户统计平台</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/fltrp_style.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/login.js"></script>
+    <script type="text/javascript" src="../static/js/base.js"></script>
+    <script type="text/javascript" src="../static/js/md5.js"></script>
+</head>
+<body class="easyui-layout login_body">
+<div class="wapper_login">
+    <div class="login_logo_box">
+        <img src="../static/images/common/fltrp_logo.png">
+        <span style="position:absolute; top:27px; left: 350px; font-size: 22px;">Unipus用户统计平台</span>
+    </div>
+    <!--login main-->
+    <div class="login_main login_width">
+        <div class="login_form_box fleft">
+            <div class="form_width" id="loginForm"><!--action="/index/login"
+                  method="post"-->>
+                <div id="loginMsg" class="" style="visibility:visible"></div><!--error-->
+                <div class="login_user">
+                    <input type="text" id="username" name="username" style="resize: none;color:#b9b9b9;" value="请输入用户名"
+                           onfocus="if (value =='请输入用户名'){value =''}"
+                           onblur="if (value ==''){value='请输入用户名'}">
+                </div><!--user-->
+                <div class="login_pw">
+                    <!--             	<input type="password" id="passwdValue" name="passwdValue" title="请输入密码" style="display:none;resize:none;color:#b9b9b9;"/> -->
+                    <input type="password" id="passwdValue" name="passwdValue" title="请输入密码"
+                           onfocus="this.type='password'" autocomplete="off"
+                           style="resize: none; color: rgb(185, 185, 185);">
+                    <input type="text" id="pwd_text" name="pwd_text" value="请输入密码"
+                           style="color: rgb(185, 185, 185); display: none;">
+                    <input type="hidden" id="password" name="password">
+                </div><!--pw-->
+                <!--CAPTCHA -->
+                <div><a href="javascript:UserLogin.submitLoginForm();" class="login_btn">登 录</a><a
+                        class="forget_pw">忘记密码了？
+                    <div class="forget_tip">请联系管理员:<br>407002883@qq.com</div>
+                </a></div><!--btn-->
+            </div> weiba
+        </div>
+    </div>
+    <!--login main end-->
+    <div class="login_footer" style="position: absolute;">外研在线教育科技有限公司 版权所有</div>
+</div>
+<script type="text/javascript">
+    //初始化
+    $(function () {
+        UserLogin.init('');
+        // 按钮登录绑定事件
+        $("body").bind('keydown', function (event) {
+            if (event.keyCode == "13") {
+                UserLogin.submitLoginForm();
+                return false;
+            }
+        });
+    })
+    var winHeight = 0;
+    function getDimensions() {
+        if (window.innerHeight)
+            winHeight = window.innerHeight;
+        else if ((document.body) && (document.body.clientHeight))
+            winHeight = document.body.clientHeight;
+        if (document.documentElement && document.documentElement.clientHeight) {
+            winHeight = document.documentElement.clientHeight;
+        }
+        if (winHeight > ($(".wapper_login").height())) {
+            $(".login_footer").css("position", "absolute");
+        } else if (winHeight <= ($(".wapper_login").height())) {
+            $(".login_footer").css("position", "fixed");
+        }
+    }
+    getDimensions();
+    //调用函数，获取并设置底部数值
+    window.onresize = getDimensions;
+</script>
+
+
+</body>
+</html>
