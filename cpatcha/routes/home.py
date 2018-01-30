@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
 from os import path
+from cpatcha.routes import current_user
 
-index_blueprint = Blueprint(
+home_blueprint = Blueprint(
     'home',
     __name__,
     # path.pardir ==> ../
@@ -11,7 +12,12 @@ index_blueprint = Blueprint(
 )
 
 
-@index_blueprint.route("/")
+@home_blueprint.route("/")
 def home():
-    # u =
     return render_template("home.html")
+
+    # u = current_user()
+    # if u is not None:
+    #     return render_template("home.html")
+    # else:
+    #     return redirect(url_for('index.index'))

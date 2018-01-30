@@ -21,7 +21,7 @@ def login():
         password=User.salted_password(password),
 
     )
-    if u is None and u.deleted == False:
+    if u is None:
         u_json = json.dumps({'code': 401})
         return u_json
     else:

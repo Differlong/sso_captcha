@@ -95,6 +95,7 @@ var UserLogin = {
                         $("#pwd_text").focus();
                     } else {
                         window.location.href="/home?backurl="+window.location.href
+                        $(".top_user").html(data.username)
                     }
 
                 }

@@ -1,0 +1,46 @@
+# bbs
+server {
+    listen 80;
+
+    location /uploads {
+        alias /root/bbs/user_image;
+    }
+    location /static {
+        alias /root/bbs/static;
+    }
+
+    location / {
+        proxy_pass http://localhost:3000;
+    }
+}
+
+# todolist
+server {
+    listen 8080;
+
+    location /uploads {
+        alias /root/todo-list/user_image;
+    }
+    location /static {
+        alias /root/todo-list/static;
+    }
+
+    location / {
+        proxy_pass http://localhost:2000;
+    }
+}
+# sso_cpatcha
+server {
+    listen 8000;
+
+#    location /uploads {
+#        alias /root/sso_cpatcha/static/images;
+#    }
+    location cpatcha/static {
+        alias /root/sso_cpatcha/static/;
+    }
+
+    location / {
+        proxy_pass http://localhost:8000;
+    }
+}

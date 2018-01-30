@@ -1,6 +1,9 @@
 class Config(object):
     """Base config class."""
-    pass
+    SECRET_KEY = 'aadwqweq'
+    TEMPLATES_AUTO_RELOAD = True
+    SEND_FILE_MAX_AGE_DEFAULT = 0
+    threaded = True
 
 
 class ProdConfig(Config):
@@ -11,11 +14,5 @@ class ProdConfig(Config):
 class DevConfig(Config):
     """Development config class."""
     # Open the DEBUG
+
     DEBUG = True
-    SECRET_KEY = 'aadwqweq'
-    # mongodb connection
-    # MONGODB_SETTINGS = {
-    #     'db': 'sso_cpatcha',
-    #     'host': 'localhost',
-    #     'port': 27017,
-    # }

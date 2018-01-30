@@ -1,9 +1,3 @@
-/**
- * Created by zhao on 2018/1/30.
- */
-/**
- * Created by zhao on 2018/1/29.
- */
 var submitQueryForm = function () {
     var phone_or_email = $("#phone_mail").val()
     $.ajax({
