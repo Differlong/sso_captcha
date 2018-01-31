@@ -95,7 +95,8 @@ var UserLogin = {
                         $("#pwd_text").focus();
                     } else {
                         window.location.href="/home?backurl="+window.location.href
-                        $(".top_user").html(data.username)
+                        localStorage.setItem('username', data.username)
+                        console.log(localStorage.getItem('username'))
                     }
 
                 }

@@ -27,6 +27,7 @@ def login():
     else:
         # session 中写入 user_id
         session['user_id'] = u.id
+
         # 设置 cookie 有效期为 永久
         session.permanent = True
         u = u.__dict__
@@ -36,6 +37,13 @@ def login():
         del u['deleted']
         u_json = json.dumps(u)
         return u_json
+
+
+@api_user_blueprint.route('/logout', methods=['POST'])
+def logout():
+    session.pop('user_id', None)
+    u_json = json.dumps({'code': 200})
+    return u_json
 
 
 @api_user_blueprint.route('/add_user', methods=['POST'])

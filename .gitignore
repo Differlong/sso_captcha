@@ -5,7 +5,11 @@ __pycache__/
 
 # C extensions
 *.so
-
+.idea
+*.conf
+wsgi.py
+*.nginx
+configuration
 # Distribution / packaging
 .Python
 env/
@@ -99,3 +103,4 @@ ENV/
 
 # mypy
 .mypy_cache/
+

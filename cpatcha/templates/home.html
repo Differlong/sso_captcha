@@ -12,21 +12,18 @@
     <script type="text/javascript" src="../static/js/jquery.min.js"></script>
     <script type="text/javascript" src="../static/js/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="../static/js/base.js"></script>
+    <script type="text/javascript" src="../static/js/home.js"></script>
     <script type="text/javascript">
         function quit() {
-            var userId = "57d76d001acca8d965d7528e";
             $.messager.confirm('确认', '确认退出吗？', function (r) {
                 if (r) {
                     $.ajax({
                         type: "POST",
-                        url: "http://139.217.18.189:8083/yhtj/1.0/loginCtrl/logout",
-                        data: {
-                            id: userId
-                        },
+                        url: "/api/user/logout",
                         dataType: "json",
                         success: function (data) {
-                            if (data.code == 0) {
-                                window.top.location = "http://139.217.18.189:8083/yhtj";
+                            if (data.code == 200) {
+                                window.top.location = "/index/";
                             } else {
                                 alert(data.msg);
                             }

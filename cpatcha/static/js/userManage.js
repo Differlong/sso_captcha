@@ -28,11 +28,42 @@ var submitQueryForm = function () {
     })
 }
 
+var logout = function () {
+    var user_id = document.cookie
+    console.log(user_id)
+    $.ajax({
+        type: 'post',
+        url: '/api/user/logout',
+        contentType: 'application/json',
+        // data: {
+        //     "username": $("#username").val(),
+        // },
+        // success: function (data) {
+        //     data = JSON.parse(data)
+        //     if (data.code === 200) {
+        //         $('table').show()
+        //         $(".con_box1_span").hide()
+        //         $(".username").html(data.username)
+        //         $(".phone").html(data.phone)
+        //         $(".type").html(data.user_role)
+        //     } else {
+        //         $(".con_box1_span").show()
+        //         $("table").hide()
+        //         $(".con_box1_span").html('此用户不存在')
+        //
+        //     }
+        // }
+
+    })
+}
 
 var __main = function () {
     $("table").hide()
     $(".btn_t1").click(function () {
         submitQueryForm()
+    })
+    $(".btn_stop").click(function () {
+        logout()
     })
 
 }
