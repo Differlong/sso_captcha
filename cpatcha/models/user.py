@@ -8,11 +8,12 @@ class User(Model):
         names = super().valid_names()
         names = names + [
             # (字段名, 类型, 默认值)
-            ('username', str, False),
+            ('username', str, ''),
             ('password', str, ''),
             ('phone', str, ''),
             ('email', str, ''),
             ('user_role', int, 3),
+            ('isEffective', bool, True),
         ]
         return names
 
@@ -33,26 +34,3 @@ class User(Model):
         # 返回摘要字符串
         return s.hexdigest()
 
-    # @classmethod
-    # def register(cls, form):
-    #     name = form['username']
-    #     password = form['password']
-    #     if len(name) > 2 and User.find_by(username=name) is None:
-    #         password = User.salted_password(password)
-    #         u = User.new(dict(
-    #             username=name,
-    #             password=password,
-    #         ))
-    #         return u
-    #     else:
-    #         return None
-    #
-    # @classmethod
-    # def validate_login(cls, form):
-    #     print('paaa',form['password'])
-    #     user = User.find_by(
-    #         username=form['username'],
-    #         password=User.salted_password(form['password'])
-    #     )
-    #     print('loginpsw',form['username'],User.salted_password(form['password']))
-    #     return user

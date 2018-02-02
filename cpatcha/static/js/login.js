@@ -83,20 +83,21 @@ var UserLogin = {
                 type: 'post',
                 url: '/api/user/login',
                 contentType: 'application/json;charset=utf-8',
+                // dataType:"json",
                 data: JSON.stringify({
                     "username": $("#username").val(),
                     "password": $("#passwdValue").val()
                 }),
                 success: function (data) {
-                    data = JSON.parse(data)
-                    if(data["code"] !== 200) {
+                    if (data.code === 200 && data.isEffective === true) {
+                        window.location.href = "/home?backurl=" + window.location.href
+                        localStorage.setItem('username', data.username)
+                        localStorage.setItem('user_role', data.user_role)
+
+                    } else {
                         $("#loginMsg").text(UserLogin.pageMessage["2"])
                         $("#loginMsg").addClass("login_error");
                         $("#pwd_text").focus();
-                    } else {
-                        window.location.href="/home?backurl="+window.location.href
-                        localStorage.setItem('username', data.username)
-                        console.log(localStorage.getItem('username'))
                     }
 
                 }

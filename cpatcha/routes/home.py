@@ -17,8 +17,3 @@ home_blueprint = Blueprint(
 def home():
     return render_template("home.html")
 
-    # u = current_user()
-    # if u is not None:
-    #     return render_template("home.html")
-    # else:
-    #     return redirect(url_for('index.index'))

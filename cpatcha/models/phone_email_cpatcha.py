@@ -11,6 +11,7 @@ class Phone_email_cpatcha(Model):
             ('email', str, ''),
             ('p_cpatcha', int, None),
             ('e_cpatcha', int, None),
+            ('isEffective', bool, True),
         ]
         return names
 

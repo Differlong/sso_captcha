@@ -16,6 +16,8 @@
 [6、重置密码](#6重置密码)<br/>
 [7、发送验证码](#7发送验证码)<br/>
 [8、查询验证](#8查询验证)<br/>
+[9、启用用户](#9启用用户)<br/>
+[10、过期验证码](#10过期验证码)<br/>
 
 
 
@@ -163,7 +165,7 @@ http://codeai.xin:8000/api/user/stop_user
 
 #### 请求方式：
 ```
-POST
+PUT
 ```
 
 #### 参数类型：
@@ -185,12 +187,12 @@ POST
 
 #### 请求URL：
 ```
-http://codeai.xin:8000/api/user/pw_reset
+http://codeai.xin:8000/api/user/password_resend
 ```
 
 #### 请求方式：
 ```
-POST
+PUT
 ```
 
 #### 参数类型：
@@ -273,5 +275,61 @@ GET
     "p_cpatcha": 539536,
     "phone": "15910690458",
     "updated_time": 1517324561
+}
+```
+
+### 9、启用用户
+
+#### 请求URL：
+```
+http://codeai.xin:8000/api/user/start_user
+```
+
+
+#### 请求方式：
+```
+PUT
+```
+
+#### 参数类型：
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|username      |Y       |string   | 用户名 |
+
+
+#### 返回示例：
+
+```javascript
+{
+    "code":200
+}
+```
+
+### 10、过期验证码
+
+#### 请求URL：
+```
+http://codeai.xin:8000/api/phone_email_cpatcha/overdue_cpatcha
+```
+
+
+#### 请求方式：
+```
+PUT
+```
+
+#### 参数类型：
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|phone      |Y       |string   | 手机号 |
+
+
+#### 返回示例：
+
+```javascript
+{
+    "code":200
 }
 ```

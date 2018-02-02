@@ -22,7 +22,7 @@ def login():
 
     )
     if u is None:
-        u_json = json.dumps({'code': 401})
+        u_json = jsonify({'code': 401})
         return u_json
     else:
         # session 中写入 user_id
@@ -34,15 +34,17 @@ def login():
         u['code'] = 200
         del u['_id']
         del u['password']
-        del u['deleted']
-        u_json = json.dumps(u)
+        # u = json.dumps(u)
+        u_json = jsonify(u)
+        # u_json = (u)
+        print('u_json', u_json)
         return u_json
 
 
 @api_user_blueprint.route('/logout', methods=['POST'])
 def logout():
     session.pop('user_id', None)
-    u_json = json.dumps({'code': 200})
+    u_json = jsonify({'code': 200})
     return u_json
 
 
@@ -66,23 +68,78 @@ def add_user():
         del u['_id']
         del u['password']
         del u['deleted']
-        u_json = json.dumps(u)
+        u_json = jsonify(u)
         return u_json
     else:
-        u_json = json.dumps({'code': 401})
+        u_json = jsonify({'code': 401})
         return u_json
 
 
-@api_user_blueprint.route('/find_user/', methods=['GET'])
+@api_user_blueprint.route('/find_user', methods=['GET'])
 def find_user():
     username = request.args['username']
     if User.find_by(username=username) is None:
-        u_json = json.dumps({'code': 401})
+        u_json = jsonify({'code': 401})
         return u_json
     else:
         u = User.find_by(username=username).__dict__
         u['code'] = 200
         del u['_id']
         del u['password']
-        u_json = json.dumps(u)
+        u_json = jsonify(u)
+        return u_json
+
+
+@api_user_blueprint.route('/stop_user', methods=['PUT'])
+def stop_user():
+    data = request.get_data().decode()
+    jsond_data = json.loads(data)
+
+    username = jsond_data.get('username')
+    if User.find_by(username=username) is None:
+        c_json = jsonify({'code': 401})
+        return c_json
+    else:
+        c = User.find_by(username=username)
+        User.update(c.id, dict(
+            isEffective=False,
+        ))
+        u_json = jsonify({'code': 200})
+        return u_json
+
+
+@api_user_blueprint.route('/start_user', methods=['PUT'])
+def start_user():
+    data = request.get_data().decode()
+    jsond_data = json.loads(data)
+
+    username = jsond_data.get('username')
+    if User.find_by(username=username) is None:
+        c_json = jsonify({'code': 401})
+        return c_json
+    else:
+        c = User.find_by(username=username)
+        User.update(c.id, dict(
+            isEffective=True,
+        ))
+        u_json = jsonify({'code': 200})
+        return u_json
+
+
+@api_user_blueprint.route('/password_resend', methods=['PUT'])
+def password_resend():
+    data = request.get_data().decode()
+    jsond_data = json.loads(data)
+
+    username = jsond_data.get('username')
+    password = User.salted_password('qwer1234')
+    if User.find_by(username=username) is None:
+        c_json = jsonify({'code': 401})
+        return c_json
+    else:
+        c = User.find_by(username=username)
+        User.update(c.id, dict(
+            password=password,
+        ))
+        u_json = jsonify({'code': 200})
         return u_json
