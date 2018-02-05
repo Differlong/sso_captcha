@@ -1,7 +1,11 @@
 # sso_captcha
-# About
+
+# About 
 整个项目分两部分：前端项目接口、后端管理接口，共10多个。涉及登录、注册、登出、添加验证码、用户权限等，
 构成一个完整的流程。
+测试账号：
+超管：test_root 密码：123
+系统管理员：test_admin 密码：123
 # 说明
 >  sso_cpatcha 接口文档: [接口文档地址](https://github.com/roll100/sso_captcha/blob/master/cpatcha/routes/api/API.MD) 
 

@@ -13,7 +13,6 @@ def configured_app(object_name):
     # 使用 onfig.from_object() 而不使用 app.config['DEBUG'] 是因为这样可以加载 class DevConfig 的配置变量集合，而不需要一项一项的添加和修改。
     app.config.from_object(object_name)
     # app.secret_key = Config.SECRET_KEY
-
     app.register_blueprint(index.index_blueprint)
     app.register_blueprint(home.home_blueprint)
     app.register_blueprint(api_user.api_user_blueprint)
@@ -27,3 +26,17 @@ def configured_app(object_name):
 
     return app
 
+
+# 运行代码
+if __name__ == '__main__':
+    app = configured_app('cpatcha.config.ProdConfig')
+    # 自动 reload jinja
+    app.jinja_env.auto_reload = True
+    # config = dict(
+    #     debug=True,
+    #     host='0.0.0.0',
+    #     port=3000,
+    #     threaded=True,
+    # )
+    # app.run(**config)
+    app.run()
