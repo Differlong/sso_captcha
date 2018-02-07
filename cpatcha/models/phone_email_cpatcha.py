@@ -1,3 +1,5 @@
+import random
+
 from cpatcha.models import Model
 
 
@@ -14,4 +16,9 @@ class Phone_email_cpatcha(Model):
             ('isEffective', bool, True),
         ]
         return names
+
+    @staticmethod
+    def random_cpatcha():
+        c = random.randint(10000, 999999)
+        return c
 

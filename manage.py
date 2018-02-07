@@ -7,11 +7,10 @@ venv = os.environ.get('SSO_CPATCHA_VENV', 'dev')
 
 app = configured_app('cpatcha.config.%sConfig' % venv.capitalize())
 # Init manager object via app object
-print('6666', 'cpatcha.config.%sConfig' % venv.capitalize())
 manager = Manager(app)
 # Create a new commands: server
 # This command will be run the Flask development_env server
-manager.add_command("runserver", Server(host='0.0.0.0', port=4000))
+manager.add_command("runserver", Server(host='127.0.0.1', port=4000))
 
 
 @manager.shell

@@ -4,11 +4,8 @@
 var submitQueryForm = function () {
     $.ajax({
         type: 'get',
-        url: '/api/user/find_user',
+        url: '/api/user/' + $("#username").val(),
         contentType: 'application/json',
-        data: {
-            "username": $("#username").val(),
-        },
         success: function (data) {
             if (data.code === 200) {
                 $('table').show()
@@ -20,7 +17,6 @@ var submitQueryForm = function () {
                 $(".con_box1_span").show()
                 $("table").hide()
                 $(".con_box1_span").html('此用户不存在')
-
             }
         }
 
@@ -28,8 +24,6 @@ var submitQueryForm = function () {
 }
 
 var logout = function () {
-    var user_id = document.cookie
-    console.log(user_id)
     $.ajax({
         type: 'post',
         url: '/api/user/logout',
@@ -40,15 +34,18 @@ var pwResend = function () {
     var username = $('.username').text()
     $.messager.confirm('确认', '将用户的密码重置为"qwer1234"？', function (r) {
         if (r) {
+
             $.ajax({
-                type: "PUT",
+                type: "put",
                 url: "/api/user/password_resend",
-                dataType: "json",
+                contentType: 'application/json',
                 data: JSON.stringify({
-                    "username": username
+                    "username": username,
+                    "password": "qwer1234",
+
                 }),
                 success: function (data) {
-                    if (data.code == 200) {
+                    if (data.code === 200) {
                         $.messager.confirm('确认', '密码重置成功！')
                     } else {
                         alert(data.code)

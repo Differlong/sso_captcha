@@ -2,11 +2,8 @@ var submitQueryForm = function () {
     var phone_or_email = $("#phone_mail").val()
     $.ajax({
         type: 'get',
-        url: '/api/phone_email_cpatcha/find_cpatcha',
+        url: '/api/phone_email_cpatcha/' + phone_or_email,
         contentType: 'application/json',
-        data: {
-            "phone_or_email": phone_or_email,
-        },
         success: function (data) {
             setFormValues(phone_or_email, data)
         }

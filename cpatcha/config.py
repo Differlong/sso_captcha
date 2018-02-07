@@ -20,7 +20,5 @@ class ProdConfig(Config):
 class DevConfig(Config):
     """Development config class."""
     # Open the DEBUG
-    # HOST = 'localhost'
-    # PORT = 4000
     DEBUG = True
     PERMANENT_SESSION_LIFETIME = timedelta(days=7)
